@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="Contact-Us.css" media="screen">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+              publicKey: "wPStUt2OrRme0vUtZ",
+            });
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('default_service', 'template_8hem0j8', this)
+                    .then(() => {
+                        document.querySelector('.u-form-send-success').style.display = 'block';
+                        document.querySelector('.u-form-send-error').style.display = 'none';
+                    }, (error) => {
+                        document.querySelector('.u-form-send-success').style.display = 'none';
+                        document.querySelector('.u-form-send-error').style.display = 'block';
+                    });
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="contact-form" class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form" source="email" name="form" style="padding: 30px; font-size: 14px;">
+        <div class="u-form-group u-form-name">
+            <label for="name-b064" class="u-label">Name</label>
+            <input type="text" placeholder="Enter your Name" id="name-b064" name="name" class="u-border-none u-input u-input-rectangle u-radius-20" required="">
+        </div>
+        <div class="u-form-group u-form-phone u-form-group-2">
+            <label for="phone-e07c" class="u-label">Phone</label>
+            <input type="tel" pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" placeholder="Enter your phone (e.g. +14155552675)" id="phone-e07c" name="phone" class="u-border-none u-input u-input-rectangle u-radius-20 u-input-2" required="">
+        </div>
+        <div class="u-form-email u-form-group">
+            <label for="email-b064" class="u-label">Email</label>
+            <input type="email" placeholder="Enter a valid email address" id="email-b064" name="email" class="u-border-none u-input u-input-rectangle u-radius-20" required="">
+        </div>
+        <div class="u-form-group u-form-message">
+            <label for="message-b064" class="u-label">Message</label>
+            <textarea placeholder="Enter your message" rows="4" cols="50" id="message-b064" name="message" class="u-border-none u-input u-input-rectangle u-radius-20" required=""></textarea>
+        </div>
+        <div class="u-align-left u-form-group u-form-submit">
+            <button type="submit" class="u-border-none u-btn u-btn-submit u-button-style u-palette-1-base u-radius-30 u-btn-1">Send</button>
+        </div>
+        <div class="u-form-send-message u-form-send-success" style="display: none;"> Thank you! Your message has been sent. </div>
+        <div class="u-form-send-error u-form-send-message" style="display: none;"> Unable to send your message. Please fix errors then try again. </div>
+        <input type="hidden" value="" name="recaptchaResponse">
+        <input type="hidden" name="formServices" value="de67b610-e327-a859-779c-ff4f8e148511">
+    </form>
+</body>
+</html>
