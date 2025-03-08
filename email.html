@@ -21,6 +21,7 @@
                     .then(() => {
                         document.querySelector('.u-form-send-success').style.display = 'block';
                         document.querySelector('.u-form-send-error').style.display = 'none';
+                        this.reset();
                     }, (error) => {
                         document.querySelector('.u-form-send-success').style.display = 'none';
                         document.querySelector('.u-form-send-error').style.display = 'block';
